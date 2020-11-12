@@ -1,7 +1,7 @@
 .search-box {
   position: relative;
   width: 40%;
-  animation: scaleInput .30s;
+  animation: scaleInput 0.3s;
   .form-control-feedback {
     position: absolute;
     z-index: 2;
@@ -12,7 +12,7 @@
     text-align: center;
     pointer-events: none;
     color: #aaa;
-    left: .65rem;
+    left: 0.65rem;
   }
 
   .close-search {
@@ -25,7 +25,7 @@
     text-align: center;
     cursor: pointer;
     color: #aaa;
-    right: .65rem;
+    right: 0.65rem;
     top: 0;
   }
 
@@ -36,9 +36,9 @@
   &__suggestion {
     position: absolute;
     width: 100%;
-    -webkit-box-shadow: 2px -1px 9px 0px rgba(0,0,0,0.35);
-    -moz-box-shadow: 2px -1px 9px 0px rgba(0,0,0,0.35);
-    box-shadow: 2px -1px 9px 0px rgba(0,0,0,0.35);
+    -webkit-box-shadow: 2px -1px 9px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 2px -1px 9px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 2px -1px 9px 0px rgba(0, 0, 0, 0.35);
     max-height: 300px;
     overflow: auto;
     border-bottom-left-radius: 7px;

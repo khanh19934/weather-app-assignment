@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { format } from 'date-fns';
 
 import SearchBox from '../../components/SearchBox';
+import AlertBox from '../../components/AlertBox';
 import { getWeatherByCityName, getWeatherByLocation } from '../../services/app.service';
 import { getLocationAsync } from '../../services/location.service';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location.svg';
@@ -9,6 +10,11 @@ import './Home.scss';
 import { IWeatherResponse } from '../../types/apiResponse.type';
 import { compose, multiply, pathOr } from 'ramda';
 import { getDayFromToday } from '../../utils/common.util';
+
+const DEFAULT_LOCATION = {
+  lat: 10.762622,
+  long: 106.660172,
+};
 
 const Home: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>('');
@@ -23,40 +29,51 @@ const Home: React.FC = () => {
 
   const searchInputValueRef = useRef('');
 
+  const fetchWeatherByLocation = async (latitude: number, longitude: number): Promise<void> => {
+    try {
+      setInitialLoadingText('Fetching the data depend on your location now. Please wait...');
+      const responseOfDefaultLocation = await getWeatherByLocation({
+        latitude,
+        longitude,
+      });
+      setWeatherResult({
+        ...responseOfDefaultLocation.data,
+        list: getDayFromToday(5, responseOfDefaultLocation.data.list),
+      });
+      setInitialLoadingText('');
+    } catch (e) {
+      setErrorMessage('Something Went Wrong');
+    }
+  };
+
   const fetchInitialData = async (): Promise<void> => {
     try {
       const resultPermission = await navigator.permissions.query({ name: 'geolocation' });
+      console.log(resultPermission.state);
       if (resultPermission.state.toLowerCase() === 'denied') {
         setIsUserDeniedPermission(true);
-        setInitialLoadingText('Fetching the data depend on your location now. Please wait...');
-        const responseOfDefaultLocation = await getWeatherByLocation({
-          latitude: 10.762622,
-          longitude: 106.660172,
-        });
-        setWeatherResult({
-          ...responseOfDefaultLocation.data,
-          list: getDayFromToday(5, responseOfDefaultLocation.data.list),
-        });
-        setInitialLoadingText('');
+        await fetchWeatherByLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.long);
         return;
       }
+      console.log('a');
       const coords = await getLocationAsync();
-
-      setInitialLoadingText('Fetching the data depend on your location now. Please wait...');
-      const res = await getWeatherByLocation({
-        latitude: coords.latitude,
-        longitude: coords.longitude,
-      });
-      setWeatherResult({ ...res.data, list: getDayFromToday(5, res.data.list) });
-      setInitialLoadingText('');
+      await fetchWeatherByLocation(coords.latitude, coords.longitude);
     } catch (e) {
-      // TODO Handle Error here
-      if (e.response.status === 404) {
-        console.log('e');
-        setErrorMessage(`Sorry we can not find city name ${searchInputValueRef}`);
-      }
+      await fetchWeatherByLocation(DEFAULT_LOCATION.lat, DEFAULT_LOCATION.long);
     }
   };
+
+  useEffect(() => {
+    if (!!errorMessage) {
+      if (isSearching) {
+        setErrorMessage('');
+        return;
+      }
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 3000);
+    }
+  }, [errorMessage]);
 
   useEffect(() => {
     fetchInitialData();
@@ -75,9 +92,9 @@ const Home: React.FC = () => {
       e.stopPropagation();
       try {
         if (isSearching || searchInput.length === 0) return;
-        console.log('call here');
+        setErrorMessage('');
         setIsSearching(true);
-        const res = await getWeatherByCityName(searchInput).catch(e => {
+        const res = await getWeatherByCityName(searchInput).catch(() => {
           throw new Error(`Sorry we can not find city name ${searchInputValueRef.current}`);
         });
         setWeatherResult({ ...res.data, list: getDayFromToday(5, res.data.list) });
@@ -91,8 +108,13 @@ const Home: React.FC = () => {
 
   return (
     <div className='container-fluid home'>
+      {isSearching && <div className='loading-overlay' />}
       {!!initialLoadingText ? (
-        initialLoadingText
+        <>
+          <div>
+            <span>{initialLoadingText}</span>
+          </div>
+        </>
       ) : (
         <div className='main-content'>
           <div className='left-container'>
@@ -125,7 +147,7 @@ const Home: React.FC = () => {
                 className='weather-icon'
               />
               <span className='main-temp'>
-                {pathOr(0, ['list', 0, 'temp', 'day'], weatherResult)} °
+                {Math.round(pathOr(0, ['list', 0, 'temp', 'day'], weatherResult))} °
               </span>
               <span className='text-capitalize'>
                 {pathOr('', ['list', 0, 'weather', 0, 'description'])(weatherResult)}
@@ -201,14 +223,15 @@ const Home: React.FC = () => {
           </div>
         </div>
       )}
-
-      {isUserDeniedPermission && (
-        <div className='alert alert-warning home__bottom-warning' role='alert'>
-          For get exactly your current location because of blocked location permission. Please
-          enable location.
-        </div>
-      )}
-      {errorMessage}
+      <div className='home__bottom-warning'>
+        {!!errorMessage && <AlertBox severity='error'>{errorMessage}</AlertBox>}
+        {isUserDeniedPermission && (
+          <AlertBox severity='warning'>
+            For get exactly your current location because of blocked location permission. Please
+            enable location.
+          </AlertBox>
+        )}
+      </div>
     </div>
   );
 };

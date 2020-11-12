@@ -1,1 +1,1 @@
-export {default} from "./app.constant"
+export { default } from './app.constant';
