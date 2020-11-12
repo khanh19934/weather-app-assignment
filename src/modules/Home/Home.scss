@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+body,html {
+  background-color:#cccddd;
+}
+
+.home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &__bottom-warning {
+    position: absolute;
+    width: 100%;
+    bottom: 1rem;
+  }
+
+  &__text-link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .main-content {
+    display: flex;
+    height: 55%;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 1px 120px 0 #666666;
+    border-radius: 25px;
+    background: #3E2B4F;
+
+  }
+  .bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    opacity: 0.38;
+    background-image: linear-gradient(333deg, rgba(34,193,195,1) 0%, rgba(224,45,253,1) 100%);
+  }
+
+  .left-container {
+    position: absolute;
+    width: 35%;
+    height: 105%;
+    border-radius: 25px;
+    background-image: url(../../assets/images/bg-md.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    box-shadow: 0 0 8px -1px #262626;
+    -webkit-box-shadow: 0 0 8px -1px #262626;
+    border: none;
+  }
+
+  .right-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 65%;
+    height: 100%;
+    padding: 35px;
+
+    .info-item {
+      transition: all ease-in-out 0.24s;
+      -webkit-transition: all ease-in-out 0.24s;
+      transform-style: preserve-3d;
+    }
+
+    .info-item:hover {
+      transform: translateX(20px) perspective(200px);
+      -webkit-transform: translateX(20px) perspective(200px);
+    }
+
+    .forecast-container {
+      display: flex;
+      .forecast-day {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        min-width: calc((100% - 125px)/4);
+        text-align: center;
+        margin: 15px;
+        border-radius: 10px;
+        padding: 20px;
+        transition: all cubic-bezier(.34,.85,.35,.86) 0.34s;
+        -webkit-transition: all cubic-bezier(.34,.85,.35,.86) 0.34s;
+        box-shadow: 0 2px 30px #311E42;
+        -webkit-box-shadow: 0 2px 30px #311E42;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        color: white;
+        &:hover {
+          background-color: #F7F7F7;
+          transform: scale(1.09) ;
+          -webkit-transform: scale(1.09) ;
+          color: black;
+        }
+
+        .weather-icon-card {
+          width: 100px;
+          height: auto;
+        }
+      }
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 50px auto;
+    }
+
+    .button-change-location {
+      margin: 0 30px ;
+      padding: 10px 65px;
+      background-color: transparent;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 30px #2b2b2b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all cubic-bezier(.34,.85,.35,.86) 0.34s;
+      -webkit-transition: all ease-in-out 0.24s;
+      outline: none;
+      #locationIcon {
+        color: white;
+        transition: all cubic-bezier(.34,.85,.35,.86) 0.34s;
+
+        -webkit-transition: all ease-in-out 0.24s;
+        margin-right: .5rem;
+      }
+    }
+
+    .button-change-location:hover {
+      background-color: #dddddd;
+      color: #110100;
+
+      #locationIcon {
+        color: black;
+      }
+    }
+
+
+  }
+
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
+    .today-info-container {
+      color: white;
+      font-family: calibri;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      position: absolute;
+      .day-of-week {
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .date {
+        font-size: 10px;
+      }
+
+      .location-group {
+        display: flex;
+        align-items: center;
+        .location-group-icon {
+          margin-right: .45rem;
+        }
+      }
+      .weather-icon {
+        height: 100%;
+        width: 60px;
+      }
+    }
+  }
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    .today-info-container {
+      color: white;
+      font-family: calibri;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      position: absolute;
+      .day-of-week {
+        font-size: 30px;
+        font-weight: 900;
+      }
+
+      .date {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .location-group {
+        display: flex;
+        align-items: center;
+      }
+      .weather-icon {
+        height: 100%;
+        width: 80px;
+      }
+    }
+  }
+
+
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    .today-info-container {
+    color: white;
+    font-family: calibri;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: absolute;
+    .day-of-week {
+      font-size: 40px;
+      font-weight: 900;
+    }
+
+
+
+    .date {
+      font-size: 18px;
+    }
+
+    .location-group {
+      display: flex;
+      align-items: center;
+    }
+    .weather-icon {
+      height: 100%;
+      width: 90px;
+    }
+  } }
+
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+    .today-info-container {
+      color: white;
+      font-family: calibri;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      position: absolute;
+      .day-of-week {
+        font-size: 50px;
+        font-weight: 900;
+      }
+
+      .date {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .location-group {
+        display: flex;
+        align-items: center;
+      }
+      .weather-icon {
+        height: 100%;
+        width: 150px;
+      }
+    }
+  }
+
+}
