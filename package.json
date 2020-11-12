@@ -2,7 +2,6 @@
   "name": "nab-interview-assignment",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://5facd67caf804a00085ebeff--condescending-kepler-dbec86.netlify.app",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
