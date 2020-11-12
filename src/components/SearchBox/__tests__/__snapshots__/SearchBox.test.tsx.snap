@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="form-group search-box"
+>
+  <div
+    className="form-control-feedback"
+  >
+    <svg>
+      search_icon.svg
+    </svg>
+  </div>
+  <input
+    autoFocus={true}
+    className="form-control"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Search by city name..."
+    type="text"
+  />
+  <div
+    className="close-search"
+    onClick={[Function]}
+  >
+    <svg>
+      close_icon.svg
+    </svg>
+  </div>
+</div>
+`;

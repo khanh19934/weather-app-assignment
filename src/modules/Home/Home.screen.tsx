@@ -25,7 +25,7 @@ const Home: React.FC = () => {
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [initialLoadingText, setInitialLoadingText] = useState<string>(
-    'We are try to getting your location. Please access the permission ...',
+    'We are try to getting your location. Please grant permission ...',
   );
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
 
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
               </div>
 
               <img
-                src={`http://openweathermap.org/img/wn/${pathOr(
+                src={`https://openweathermap.org/img/wn/${pathOr(
                   '02d',
                   ['list', 0, 'weather', 0, 'icon'],
                   weatherResult,

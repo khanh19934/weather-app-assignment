@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Snap shot render correctly 1`] = `
+<div
+  className="container-fluid home"
+>
+  <div
+    className="initial-loading"
+  >
+    <span>
+      We are try to getting your location. Please grant permission ...
+    </span>
+  </div>
+  <div
+    className="home__bottom-warning"
+  />
+</div>
+`;

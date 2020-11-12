@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="alert alert-warning"
+>
+  For get exactly your current location because of blocked location permission. Please enable location.
+</div>
+`;
+
+exports[`render correctly with severity error 1`] = `
+<div
+  className="alert alert-danger"
+>
+  Sorry we can not find city name abc
+</div>
+`;

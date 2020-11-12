@@ -19,7 +19,7 @@ const WeatherCard: React.FC<IProps> = ({ dt, weather, temp }: IProps) => {
   return (
     <div className='forecast-day'>
       <img
-        src={`http://openweathermap.org/img/wn/${weather[0].icon || '02d'}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${weather[0].icon || '02d'}@2x.png`}
         alt='weather'
         className='weather-icon-card'
       />

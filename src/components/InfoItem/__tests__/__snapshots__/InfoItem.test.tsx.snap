@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="d-flex justify-content-between mb-2 info-item"
+>
+  <span
+    className="text-white"
+  >
+    HUMIDITY
+  </span>
+  <span
+    className="text-white"
+  >
+    12%
+  </span>
+</div>
+`;
