@@ -9,7 +9,6 @@ import './Home.scss';
 import { IWeatherResponse } from '../../types/apiResponse.type';
 import { compose, multiply, pathOr } from 'ramda';
 import { getDayFromToday } from '../../utils/common.util';
-import { throws } from 'assert';
 
 const Home: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>('');
