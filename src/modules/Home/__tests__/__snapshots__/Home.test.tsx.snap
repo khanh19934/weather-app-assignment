@@ -1,5 +1,158 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[` 1`] = `
+<div
+  className="container-fluid home"
+>
+  <div
+    className="main-content"
+  >
+    <div
+      className="left-container"
+    >
+      <div
+        className="bg-overlay"
+      />
+      <div
+        className="today-info-container"
+      >
+        <span
+          className="day-of-week"
+        />
+        <span
+          className="date"
+        />
+        <div
+          className="location-group"
+        >
+          <svg
+            className="location-group-icon"
+            color="#fff"
+          >
+            location.svg
+          </svg>
+          <span>
+            asd
+          </span>
+        </div>
+        <img
+          alt="weather"
+          className="weather-icon"
+          src="https://openweathermap.org/img/wn/02d@2x.png"
+        />
+        <span
+          className="main-temp"
+        >
+          0
+           °
+        </span>
+        <span
+          className="text-capitalize"
+        >
+          
+        </span>
+      </div>
+    </div>
+    <div
+      className="right-container"
+    >
+      <div
+        className="d-flex justify-content-between mb-2 info-item"
+      >
+        <span
+          className="text-white"
+        >
+          HUMIDITY
+        </span>
+        <span
+          className="text-white"
+        >
+          0%
+        </span>
+      </div>
+      <div
+        className="d-flex justify-content-between mb-2 info-item"
+      >
+        <span
+          className="text-white"
+        >
+          WIND SPEED
+        </span>
+        <span
+          className="text-white"
+        >
+          0 m/s
+        </span>
+      </div>
+      <div
+        className="d-flex justify-content-between mb-2 info-item"
+      >
+        <span
+          className="text-white"
+        >
+          FEELS LIKE
+        </span>
+        <span
+          className="text-white"
+        >
+          0 °
+        </span>
+      </div>
+      <div
+        className="d-flex justify-content-between mb-2 info-item"
+      >
+        <span
+          className="text-white"
+        >
+          HIGHEST TEMP
+        </span>
+        <span
+          className="text-white"
+        >
+          0 °
+        </span>
+      </div>
+      <div
+        className="d-flex justify-content-between mb-2 info-item"
+      >
+        <span
+          className="text-white"
+        >
+          LOWEST TEMP
+        </span>
+        <span
+          className="text-white"
+        >
+          0 °
+        </span>
+      </div>
+      <div
+        className="forecast-container"
+      />
+      <div
+        className="input-container"
+      >
+        <button
+          className="button-change-location"
+          data-testid="submitButton"
+          onClick={[Function]}
+        >
+          <svg
+            id="locationIcon"
+          >
+            location.svg
+          </svg>
+          Change Location
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="home__bottom-warning"
+  />
+</div>
+`;
+
 exports[`Test Snap shot render correctly 1`] = `
 <div
   className="container-fluid home"

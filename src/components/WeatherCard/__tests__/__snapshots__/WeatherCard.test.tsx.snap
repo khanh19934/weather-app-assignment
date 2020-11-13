@@ -3,6 +3,7 @@
 exports[`render correctly 1`] = `
 <div
   className="forecast-day"
+  data-testid="weatherCard"
 >
   <img
     alt="weather"

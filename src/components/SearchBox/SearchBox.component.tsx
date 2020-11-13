@@ -26,6 +26,7 @@ const SearchBox: React.FC<IProps> = ({
         type='text'
         className='form-control'
         placeholder='Search by city name...'
+        data-testid='searchBox'
       />
       <div className='close-search' onClick={handleToggleShowSearchBox}>
         <CloseIcon />

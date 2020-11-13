@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render correctly 1`] = `
+exports[`Snapshot test render correctly 1`] = `
 <div
   className="form-group search-box"
 >
@@ -14,6 +14,7 @@ exports[`render correctly 1`] = `
   <input
     autoFocus={true}
     className="form-control"
+    data-testid="searchBox"
     onChange={[Function]}
     onKeyDown={[Function]}
     placeholder="Search by city name..."

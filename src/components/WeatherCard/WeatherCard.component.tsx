@@ -17,7 +17,7 @@ interface IProps {
 
 const WeatherCard: React.FC<IProps> = ({ dt, weather, temp }: IProps) => {
   return (
-    <div className='forecast-day'>
+    <div className='forecast-day' data-testid='weatherCard'>
       <img
         src={`https://openweathermap.org/img/wn/${weather[0].icon || '02d'}@2x.png`}
         alt='weather'
